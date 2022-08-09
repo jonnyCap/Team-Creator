@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">TC</string>
+    <string name="main_header">Team Creator</string>
+    <string name="main_player">Players</string>
+    <string name="main_games">Games</string>
+    <string name="player_header">Players</string>
+    <string name="addplayerimagebutton">addPlayerImageButton</string>
+    <string name="player_placeHolder">Player</string>
+    <string name="player_defaultStrengthPlaceHolder">Default Player Strength</string>
+    <string name="gamesHeader">Games</string>
+    <string name="addgameimagebutton">addGameImageButton</string>
+    <string name="game_PlaceHolder">Game</string>
+    <string name="inspectPlayer_NamePlaceHolder">Player Name</string>
+    <string name="submit">Submit new Skill-level</string>
+    <string name="player_GamePlaceHolder">Game</string>
+    <string name="add_player_header">Add Player:</string>
+    <string name="add_game_header">Add Game:</string>
+    <string name="name_Hint">Name of Game</string>
+    <string name="create_teams_header">Create Teams:</string>
+    <string name="select_game">Select Game:</string>
+    <string name="select_amount_of_teams">Select Amount of Teams:</string>
+    <string name="nameHint">Name</string>
+    <string name="select_balancing_method">Select Balancing Method:</string>
+    <string name="select_player">Select Player:</string>
+    <string name="amount_of_teams_hint">Amount of Teams</string>
+    <string name="teammember_placeholder">Teammember</string>
+    <string name="sf_placeHolder">SF</string>
+    <string name="team_placeHOlder">Team</string>
+    <string name="teammember_amount_placeHolder">TM</string>
+    <string name="player_skill_level">Player Skill Level:</string>
+    <string name="team_members">Team Members:</string>
+    <string name="average_skill">Average Skill:</string>
+    <string name="set_default_strengthTxt">Set default Strength:</string>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentFinishedTeam"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team_placeHOlder"
+            android:textSize="25sp"
+            android:textColor="@color/maincolor"
+            android:textStyle="bold"
+            android:id="@+id/finishedTeamHeader"/>
+
+        <TextView
+            android:id="@+id/finalTeamAverageStrength"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/sf_placeHolder"
+            android:textAlignment="textEnd"
+            android:textColor="@color/maincolor"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/finalTeamMemberAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="50dp"
+            android:layout_toStartOf="@id/finalTeamAverageStrength"
+            android:text="@string/teammember_amount_placeHolder"
+            android:textColor="@color/maincolor"
+            android:textSize="25sp" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:id="@+id/parentPlayerStrength"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:id="@+id/inspectPlayerLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player_GamePlaceHolder"
+        android:textSize="25sp"
+        android:textColor="@color/maincolor"
+        android:textStyle="bold"
+        android:id="@+id/finalPlayerStrengthText"/>
+
+    <TextView
+        android:id="@+id/specificStrength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/finalPlayerStrengthText"
+        android:text="@string/player_defaultStrengthPlaceHolder"
+        android:textSize="15sp"
+        android:textColor="@color/maincolor" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

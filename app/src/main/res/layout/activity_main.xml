@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.myApplication.teamCreator.MainActivity"
+
+    android:background="@drawable/gradient_background">
+
+       <androidx.cardview.widget.CardView
+           android:layout_width="400dp"
+           android:layout_height="180dp"
+           android:id="@+id/headerCardView"
+           android:layout_centerHorizontal="true"
+           android:layout_margin="20dp"
+           app:cardElevation="15dp"
+           app:cardCornerRadius="10dp"
+           android:backgroundTint="@color/maincolor">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.utils.widget.ImageFilterButton
+                    android:id="@+id/logo"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/maincolor"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/logo_image"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/main_header"
+                    android:textSize="60sp"
+                    android:textStyle=""
+                    android:textColor="@color/white"
+                    android:layout_toEndOf="@id/logo"
+                    android:layout_marginStart="10dp"
+                    android:layout_centerVertical="true"
+                    android:lineSpacingMultiplier="0.8"/>
+            </RelativeLayout>
+       </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/playerButton"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/headerCardView"
+            android:layout_centerHorizontal="false"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/main_player"
+            android:textSize="20sp"
+            android:textColor="@color/maincolor" />
+
+        <Button
+            android:id="@+id/gamesButton"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/playerButton"
+            android:layout_centerHorizontal="false"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/main_games"
+            android:textSize="20sp"
+            android:textColor="@color/maincolor" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/gamesButton"
+            android:layout_centerHorizontal="false"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/white"
+            android:text="Start"
+            android:textColor="@color/maincolor"
+            android:textSize="60dp" />
+</RelativeLayout>

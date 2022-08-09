@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.myApplication.teamCreator.CreateTeamsActivity"
+    android:background="@drawable/gradient_background">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relLayoutTeamsOverview"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:layout_width="310dp"
+            android:layout_height="60dp"
+            android:text="@string/team_placeHOlder"
+            android:gravity="center"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="-10dp"
+            android:background="@drawable/rounded_corner"
+            android:id="@+id/finishedTeamsText"/>
+
+        <RelativeLayout
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="-10dp"
+            android:background="@drawable/rounded_corner_lightblue">
+
+            <TextView
+                android:id="@+id/team_members_header"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="@string/team_members"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toEndOf="@id/team_members_header"
+                android:gravity="center"
+                android:text="@string/average_skill"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/finishedTeamsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="515dp"
+        android:layout_below="@id/relLayoutTeamsOverview" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/redoTeamsWNS"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="-10dp"
+            android:background="@drawable/rounded_corner"
+            android:contentDescription="@string/addplayerimagebutton"
+            android:src="@drawable/refresh_image" />
+
+        <ImageButton
+            android:id="@+id/redoTeamsWOS"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-10dp"
+            android:background="@drawable/rounded_corner"
+            android:contentDescription="@string/addplayerimagebutton"
+            android:src="@drawable/redo_image" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
