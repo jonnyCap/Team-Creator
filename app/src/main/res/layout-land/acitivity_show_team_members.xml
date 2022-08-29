@@ -11,34 +11,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/relLayoutTeams"
         android:layout_marginBottom="10dp">
-        <TextView
-            android:layout_width="310dp"
-            android:layout_height="60dp"
-            android:text="@string/team_placeHOlder"
-            android:gravity="center"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="-10dp"
-            android:background="@drawable/rounded_corner"
-            android:id="@+id/teamMembersHeader" />
 
         <TextView
-            android:layout_width="90dp"
+            android:id="@+id/teamMembersHeader"
+            android:layout_width="450dp"
             android:layout_height="60dp"
-            android:text="@string/sf_placeHolder"
-            android:gravity="center"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-10dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginEnd="-10dp"
             android:background="@drawable/rounded_corner"
-            android:id="@+id/averageTeamStrength" />
+            android:gravity="center"
+            android:text="@string/team_placeHOlder"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="250dp"
@@ -52,6 +38,32 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/goBackTeamsOverView"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_corner"
+            android:contentDescription="@string/addplayerimagebutton"
+            android:src="@drawable/arrowback_image" />
+
+        <TextView
+            android:id="@+id/averageTeamStrength"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:text="@string/sf_placeHolder"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 
@@ -66,15 +78,6 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true">
 
-        <ImageButton
-            android:id="@+id/goBackTeamsOverView"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-10dp"
-            android:background="@drawable/rounded_corner"
-            android:contentDescription="@string/addplayerimagebutton"
-            android:src="@drawable/arrowback_image" />
 
     </RelativeLayout>
 </RelativeLayout>

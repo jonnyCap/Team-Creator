@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.myApplication.teamCreator.AddGameActivity"
-    android:background="@drawable/gradient_background">>
+    tools:context="com.myApplication.teamCreator.PlayerActivity"
+    android:background="@drawable/gradient_background">
+
     <TextView
-        android:layout_width="260dp"
+        android:layout_width="500dp"
         android:layout_height="60dp"
-        android:text="@string/add_game_header"
+        android:text="@string/player_header"
         android:gravity="center"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -17,27 +18,24 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="-10dp"
         android:background="@drawable/rounded_corner"
-        android:id="@+id/addGameTitle" />
+        android:id="@+id/playerHeader" />
+
     <ImageButton
-        android:id="@+id/finalAddGameButton"
-        android:layout_width="130dp"
+        android:id="@+id/addPlayerButton"
+        android:layout_width="180dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="-10dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
         android:contentDescription="@string/addplayerimagebutton"
-        android:src="@drawable/updategame_image" />
+        android:src="@drawable/add_image" />
 
-    <EditText
-        android:id="@+id/gameName"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addGameTitle"
-        android:layout_marginTop="10dp"
-        android:hint="@string/name_Hint"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        android:textColor="@color/maincolor"/>
+        android:layout_below="@id/playerHeader"
+        android:layout_margin="10dp" />
 
 </RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.myApplication.teamCreator.StartActivity">
     <TextView
-        android:layout_width="310dp"
+        android:layout_width="500dp"
         android:layout_height="60dp"
         android:text="@string/create_teams_header"
         android:gravity="center"
@@ -18,104 +18,112 @@
         android:background="@drawable/rounded_corner"
         android:id="@+id/startHeader" />
 
+    <ImageButton
+        android:id="@+id/finalCreateTeamsButton"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner"
+        android:src="@drawable/arrowright_image" />
+
     <TextView
         android:id="@+id/selectGameText"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:paddingStart="15dp"
         android:layout_below="@id/startHeader"
         android:layout_marginStart="-10dp"
+        android:background="@drawable/rounded_corner_lightblue"
+        android:padding="2dp"
+        android:paddingStart="15dp"
         android:text="@string/select_game"
         android:textColor="@color/white"
-        android:textSize="17sp"
-        android:background="@drawable/rounded_corner_lightblue"/>
+        android:textAlignment="center"
+        android:textSize="17sp" />
 
     <Spinner
         android:id="@+id/selectGameSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/selectGameText"
-        android:textSize="20sp" />
+        android:layout_width="500dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/startHeader"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-7dp"
+        android:layout_toEndOf="@id/selectGameText"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/selectTeamsAmountText"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/selectGameSpinner"
+        android:layout_below="@id/selectGameText"
         android:layout_marginStart="-10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corner_lightblue"
         android:padding="2dp"
         android:paddingStart="15dp"
         android:text="@string/select_amount_of_teams"
         android:textColor="@color/white"
-        android:background="@drawable/rounded_corner_lightblue"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/numberOfTeamsEdtTxt"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_below="@id/selectTeamsAmountText"
-        android:hint="@string/amount_of_teams_hint"
-        android:textSize="20sp"
+        android:layout_below="@id/selectGameSpinner"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@id/selectTeamsAmountText"
         android:digits="0123456789"
-        android:maxLength="3"
+        android:hint="@string/amount_of_teams_hint"
         android:inputType="numberDecimal"
-        android:textColor="@color/maincolor"/>
+        android:maxLength="3"
+        android:textColor="@color/maincolor"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/selectTeamBalancingText"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/numberOfTeamsEdtTxt"
-        android:textColor="@color/white"
+        android:layout_below="@id/selectTeamsAmountText"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="-10dp"
         android:background="@drawable/rounded_corner_lightblue"
         android:padding="2dp"
         android:paddingStart="15dp"
         android:text="@string/select_balancing_method"
-        android:textSize="17sp"
-        android:layout_marginStart="-10dp"/>
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
     <Spinner
         android:id="@+id/selectTeamBalancingSpinner"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/selectTeamBalancingText"
-        android:textSize="20sp"/>
+        android:layout_height="35dp"
+        android:layout_below="@id/numberOfTeamsEdtTxt"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/selectTeamsAmountText"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/selectPlayerText"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/selectTeamBalancingSpinner"
-        android:textColor="@color/white"
+        android:layout_below="@id/selectTeamBalancingText"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="-10dp"
         android:background="@drawable/rounded_corner_lightblue"
         android:padding="2dp"
         android:paddingStart="15dp"
         android:text="@string/select_player"
-        android:textSize="17sp"
-        android:layout_marginStart="-10dp"/>
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selectPlayerRecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/selectPlayerText"
-        android:layout_marginTop="5dp"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true">
-
-        <ImageButton
-            android:id="@+id/finalCreateTeamsButton"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-10dp"
-            android:background="@drawable/rounded_corner"
-            android:src="@drawable/arrowright_image" />
-    </RelativeLayout>
+        android:layout_marginTop="5dp" />
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -33,7 +34,14 @@ public class CreateTeamsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_teams);
-
+        //Check current Config
+        int orientation = getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getSupportActionBar().hide();
+        } else {
+            getSupportActionBar().show();
+        }
+        //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F9FFF")));
 

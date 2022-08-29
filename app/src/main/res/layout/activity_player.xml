@@ -7,19 +7,29 @@
     android:background="@drawable/gradient_background">
 
     <TextView
-        android:layout_width="310dp"
+        android:id="@+id/playerHeader"
+        android:layout_width="260dp"
         android:layout_height="60dp"
-        android:text="@string/player_header"
-        android:gravity="center"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:layout_marginStart="-10dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginStart="-10dp"
         android:background="@drawable/rounded_corner"
-        android:id="@+id/playerHeader" />
+        android:gravity="center"
+        android:text="@string/player_header"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
+    <ImageButton
+        android:id="@+id/addPlayerButton"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner"
+        android:contentDescription="@string/addplayerimagebutton"
+        android:src="@drawable/add_image" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPlayer"
@@ -27,22 +37,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/playerHeader"
         android:layout_margin="10dp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true">
-
-        <ImageButton
-            android:id="@+id/addPlayerButton"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-10dp"
-            android:background="@drawable/rounded_corner"
-            android:contentDescription="@string/addplayerimagebutton"
-            android:src="@drawable/add_image" />
-
-    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.myApplication.teamCreator.PlayerInspectActivity"
+    android:background="@drawable/gradient_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/inspectPlayerNameRelativeLayout">
+
+        <TextView
+            android:id="@+id/inspectPlayerName"
+            android:layout_width="450dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="-10dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:text="@string/inspectPlayer_NamePlaceHolder"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/newStrengthOptionsSpinner"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="180dp"
+            android:background="@drawable/rounded_corner" />
+
+        <ImageButton
+            android:id="@+id/submitNewSpecificStrength"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-10dp"
+            android:background="@drawable/rounded_corner"
+            android:contentDescription="@string/addplayerimagebutton"
+            android:src="@drawable/updateplayer_image" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPlayerStrength"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_below="@id/inspectPlayerNameRelativeLayout"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp" />
+
+
+</RelativeLayout>

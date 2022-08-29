@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/gradient_background">>
 
     <TextView
-        android:layout_width="260dp"
+        android:layout_width="500dp"
         android:layout_height="60dp"
         android:text="@string/add_player_header"
         android:gravity="center"
@@ -20,7 +20,7 @@
 
     <ImageButton
         android:id="@+id/finalAddPlayerButton"
-        android:layout_width="130dp"
+        android:layout_width="180dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="-10dp"
@@ -57,4 +57,12 @@
         android:layout_height="50dp"
         android:layout_below="@id/selectDefaultStrengthTxt" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true">
+
+
+
+    </RelativeLayout>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.myApplication.teamCreator;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -27,7 +28,14 @@ public class AddPlayerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_player);
-
+        //Check current Config
+        int orientation = getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getSupportActionBar().hide();
+        } else {
+            getSupportActionBar().show();
+        }
+        //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F9FFF")));
 
