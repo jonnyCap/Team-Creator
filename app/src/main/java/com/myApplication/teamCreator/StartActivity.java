@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -21,6 +22,7 @@ public class StartActivity extends AppCompatActivity {
 
     private Spinner selectGameSpinner, selectTeamBalancingSpinner;
     private EditText amountOfTeamsEdtTxt;
+    private CheckBox selectAllCheckBox;
     private CustomSelectPlayerAdapter adapter;
     private final String[] balancingMethods = new String[4];
     ArrayList<Game> games;
@@ -66,12 +68,12 @@ public class StartActivity extends AppCompatActivity {
                     } else {
                         teamsAmount = Integer.parseInt(amountOfTeamsEdtTxt.getText().toString());
                         finalBalancingMethod = selectTeamBalancingSpinner.getSelectedItem().toString();
-                        if (teamsAmount > adapter.getSelectedPlayersAmount() && adapter.getSelectedPlayersAmount() != 0) {
+                        if (teamsAmount > adapter.getSelectedPlayersAmount() && adapter.getSelectedPlayersAmount() != 0 && !selectAllCheckBox.isChecked()) {
                             Toast.makeText(StartActivity.this, "Cannot create more Teams than Players!", Toast.LENGTH_SHORT).show();
                         } else if (teamsAmount == 0) {
                             Toast.makeText(StartActivity.this, "Cannot create 0 Teams!", Toast.LENGTH_SHORT).show();
                         } else {
-                            if (adapter.getSelectedPlayersAmount() == 0) {
+                            if (adapter.getSelectedPlayersAmount() == 0 || selectAllCheckBox.isChecked()) {
                                 selectedPlayers = adapter.getAllPlayers();
                             }
                             startActivity(new Intent(StartActivity.this, BackgroundActivity.class));
@@ -80,6 +82,9 @@ public class StartActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Checkbox for Select All
+        selectAllCheckBox = findViewById(R.id.selectAllPlayersCheckBox);
         //spinner for Game
         selectGameSpinner = findViewById(R.id.selectGameSpinner);
         games = dbHelper.fetchAllData();

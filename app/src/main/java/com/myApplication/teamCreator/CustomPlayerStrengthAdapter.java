@@ -38,7 +38,7 @@ public class CustomPlayerStrengthAdapter extends RecyclerView.Adapter<CustomPlay
     public void onBindViewHolder(@NonNull ViewHolderPlayerStrength holder, int position) {
         holder.finalPlayerStrengthText.setText(gameAndStrength.get(position));
         SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
-        String player = pref.getString("username", "");
+        String player = pref.getString("fullUsername", "");
         String specificStrengthString = String.valueOf(dbHelper.returnSpecificStrength(gameAndStrength.get(position),player));
         holder.specificStrength.setText(specificStrengthString);
         holder.parentPlayerStrength.setOnClickListener(new View.OnClickListener() {

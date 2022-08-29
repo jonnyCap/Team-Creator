@@ -23,6 +23,7 @@ public class PlayerInspectActivity extends AppCompatActivity {
     private final ArrayList<String> newPlayerStrengthOptions= new ArrayList<>();
     private Spinner newStrengthOptionSpinner;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,15 @@ public class PlayerInspectActivity extends AppCompatActivity {
         gameSpinnerAdapter = new ArrayAdapter<>(this, R.layout.spinner_item_white, this.newPlayerStrengthOptions);
         gameSpinnerAdapter.setDropDownViewResource(R.layout.spinner_item);
         newStrengthOptionSpinner.setAdapter(gameSpinnerAdapter);
-
+        //Back Button
+        ImageButton backButton = findViewById(R.id.closePlayerInspectBtn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomPlayerStrengthAdapter.setSelectedGame("");
+                finish();
+            }
+        });
         //Update Strength on Specific Games
         ImageButton submitSpecificStrength = findViewById(R.id.submitNewSpecificStrength);
         submitSpecificStrength.setOnClickListener(new View.OnClickListener() {
@@ -68,13 +77,12 @@ public class PlayerInspectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String newStrengthString = newStrengthOptionSpinner.getSelectedItem().toString();
                 int newStrength = Integer.parseInt(newStrengthString);
-                String playerName = pref.getString("username", "");
+                String playerName = pref.getString("fullUsername", "");
                 if(CustomPlayerStrengthAdapter.getSelectedGame().equals("")){
                     Toast.makeText(PlayerInspectActivity.this, "Choose a game!", Toast.LENGTH_SHORT).show();
                 }else {
                     dbHelper.updateColumn(CustomPlayerStrengthAdapter.getSelectedGame(), newStrength, playerName);
-                    CustomPlayerStrengthAdapter.setSelectedGame("");
-                    finish();
+                    adapter.notifyDataSetChanged();
                 }
             }
         });
