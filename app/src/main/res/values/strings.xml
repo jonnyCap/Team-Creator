@@ -31,4 +31,5 @@
     <string name="team_members">Team Members:</string>
     <string name="average_skill">Average Skill:</string>
     <string name="set_default_strengthTxt">Set default Strength:</string>
+    <string name="select_all_players">Select all Players:</string>
 </resources>

@@ -88,13 +88,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/selectTeamBalancingSpinner"
-        android:textColor="@color/white"
+        android:layout_marginStart="-10dp"
         android:background="@drawable/rounded_corner_lightblue"
         android:padding="2dp"
         android:paddingStart="15dp"
         android:text="@string/select_player"
-        android:textSize="17sp"
-        android:layout_marginStart="-10dp"/>
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/selectAllPlayersTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectTeamBalancingSpinner"
+        android:layout_marginStart="150dp"
+        android:background="@drawable/rounded_corner_lightblue"
+        android:padding="2dp"
+        android:text="@string/select_all_players"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+    <CheckBox
+        android:id="@+id/selectAllPlayersCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/selectAllPlayersTxt"
+        android:layout_below="@id/selectTeamBalancingText"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selectPlayerRecyclerview"
