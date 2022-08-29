@@ -45,8 +45,16 @@ public class CustomPlayerAdapter extends RecyclerView.Adapter<CustomPlayerAdapte
             public void onClick(View v) {
                 SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
                 SharedPreferences.Editor editor = pref.edit();
-                if(players.get(position).getName().length() > 0) {
-                    editor.putString("username", players.get(position).getName());
+                String currentPlayer = players.get(position).getName();
+                if(currentPlayer.length() > 0) {
+                    if(currentPlayer.length() > 10){
+                        char point = '.';
+                        String currentPlayerShort = currentPlayer.substring(0, 8) + point;
+                        editor.putString("username", currentPlayerShort);
+                    }else{
+                        editor.putString("username", currentPlayer);
+                    }
+                    editor.putString("fullUsername", currentPlayer);
                     editor.apply();
                 }
                 context.startActivity(new Intent(context, PlayerInspectActivity.class));
