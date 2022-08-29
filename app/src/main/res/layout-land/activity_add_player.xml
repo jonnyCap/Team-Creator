@@ -35,6 +35,7 @@
         android:layout_below="@id/addPlayerTitle"
         android:layout_marginTop="10dp"
         android:hint="@string/nameHint"
+        android:maxLength="15"
         android:inputType="textPersonName"
         android:textColor="@color/maincolor"
         android:textSize="24sp" />
