@@ -20,7 +20,7 @@
         android:id="@+id/inspectPlayerName" />
 
     <ImageButton
-        android:id="@+id/closePlayerInspectBtn"
+        android:id="@+id/closeBtn"
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"

@@ -41,6 +41,14 @@ public class StartActivity extends AppCompatActivity {
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
             getSupportActionBar().hide();
+            //Close Button
+            ImageButton closeBtn = findViewById(R.id.closeBtn);
+            closeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
         } else {
             getSupportActionBar().show();
         }
@@ -50,6 +58,7 @@ public class StartActivity extends AppCompatActivity {
 
         DBHelper dbHelper = new DBHelper(this);
         RecyclerView selectPlayerRecyclerview = findViewById(R.id.selectPlayerRecyclerview);
+
         //final Button
         ImageButton finalCreateTeamsButton = findViewById(R.id.finalCreateTeamsButton);
         finalCreateTeamsButton.setOnClickListener(new View.OnClickListener() {

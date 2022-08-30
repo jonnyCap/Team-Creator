@@ -36,6 +36,14 @@ public class AddPlayerActivity extends AppCompatActivity {
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
             getSupportActionBar().hide();
+            //Close Button
+            ImageButton closeBtn = findViewById(R.id.closeBtn);
+            closeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
         } else {
             getSupportActionBar().show();
         }
@@ -57,6 +65,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         //Elements
         adjustIndividualStrenghCeckBox = findViewById(R.id.adjustIndividualStrengthCheckBox);
         playerName = findViewById(R.id.playerName);
+
         finalAddPlayerButton = findViewById(R.id.finalAddPlayerButton);
         finalAddPlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override

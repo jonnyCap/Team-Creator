@@ -27,6 +27,14 @@ public class AddGameActivity extends AppCompatActivity {
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
             getSupportActionBar().hide();
+            //Close Button
+            ImageButton closeBtn = findViewById(R.id.closeBtn);
+            closeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
         } else {
             getSupportActionBar().show();
         }
@@ -38,6 +46,7 @@ public class AddGameActivity extends AppCompatActivity {
         adapter = new CustomGameAdapter( this);
 
         gameName = findViewById(R.id.gameName);
+
         finalAddGameButton = findViewById(R.id.finalAddGameButton);
         finalAddGameButton.setOnClickListener(new View.OnClickListener() {
             @Override

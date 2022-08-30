@@ -28,6 +28,14 @@ public class PlayerActivity extends AppCompatActivity {
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
             getSupportActionBar().hide();
+            //Close Button
+            ImageButton closeBtn = findViewById(R.id.closeBtn);
+            closeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
         } else {
             getSupportActionBar().show();
         }

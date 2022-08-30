@@ -38,6 +38,14 @@ public class CreateTeamsActivity extends AppCompatActivity {
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
             getSupportActionBar().hide();
+            //Close Button
+            ImageButton closeBtn = findViewById(R.id.closeBtn);
+            closeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
         } else {
             getSupportActionBar().show();
         }
@@ -61,6 +69,8 @@ public class CreateTeamsActivity extends AppCompatActivity {
         //------------------------------Hier startet die Teamerstellung------------------------
         doCalculations();
         //----------------------------Hier der RecyclerView-------------------------------------
+
+        //Redo Teams WITH NEW SETTINGS
         ImageButton redoTeamsWNS = findViewById(R.id.redoTeamsWNS);
         redoTeamsWNS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +78,7 @@ public class CreateTeamsActivity extends AppCompatActivity {
                 startActivity(new Intent(CreateTeamsActivity.this, StartActivity.class));
             }
         });
+        //Redo Teams WITH OLD SETTINGS
         ImageButton redoTeamsWOS = findViewById(R.id.redoTeamsWOS);
         redoTeamsWOS.setOnClickListener(new View.OnClickListener() {
             @Override

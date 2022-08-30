@@ -62,7 +62,7 @@ public class PlayerInspectActivity extends AppCompatActivity {
         gameSpinnerAdapter.setDropDownViewResource(R.layout.spinner_item);
         newStrengthOptionSpinner.setAdapter(gameSpinnerAdapter);
         //Back Button
-        ImageButton backButton = findViewById(R.id.closePlayerInspectBtn);
+        ImageButton backButton = findViewById(R.id.closeBtn);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
