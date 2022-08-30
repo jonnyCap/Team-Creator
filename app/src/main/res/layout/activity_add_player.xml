@@ -58,4 +58,25 @@
         android:layout_height="50dp"
         android:layout_below="@id/selectDefaultStrengthTxt" />
 
+    <TextView
+        android:id="@+id/adjustIndividualStrengthTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerDefaultStrengthSpinner"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/adjust_individual_strength_for_games"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corner"
+        android:padding="2dp"
+        android:textSize="17sp" />
+
+    <CheckBox
+        android:id="@+id/adjustIndividualStrengthCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerDefaultStrengthSpinner"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@id/adjustIndividualStrengthTxt" />
+
 </RelativeLayout>

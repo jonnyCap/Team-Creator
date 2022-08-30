@@ -1,11 +1,14 @@
 package com.myApplication.teamCreator;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -20,6 +23,7 @@ public class AddPlayerActivity extends AppCompatActivity {
     ImageButton finalAddPlayerButton;
     EditText playerName;
     Spinner playerDefaultStrengthSpinner;
+    CheckBox adjustIndividualStrenghCeckBox;
     private CustomPlayerAdapter adapter;
     private DBHelper dbHelper;
     private final ArrayList<String> newPlayerStrengthOptions= new ArrayList<>();
@@ -47,7 +51,11 @@ public class AddPlayerActivity extends AppCompatActivity {
         ArrayAdapter<String> gameSpinnerAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, this.newPlayerStrengthOptions);
         gameSpinnerAdapter.setDropDownViewResource(R.layout.spinner_item);
         playerDefaultStrengthSpinner.setAdapter(gameSpinnerAdapter);
-
+        //Shared Preference
+        SharedPreferences pref = this.getApplicationContext().getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        //Elements
+        adjustIndividualStrenghCeckBox = findViewById(R.id.adjustIndividualStrengthCheckBox);
         playerName = findViewById(R.id.playerName);
         finalAddPlayerButton = findViewById(R.id.finalAddPlayerButton);
         finalAddPlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +69,21 @@ public class AddPlayerActivity extends AppCompatActivity {
                 }else {
                     playerDefaultStrengthInt = Integer.parseInt(playerDefaultStrengthString);
                     adapter.setPlayers(dbHelper.AddAndFetchAllPlayerData("Players", "name", "defaultStrength", playerNameString, playerDefaultStrengthInt));
-                    finish();
+                    if(adjustIndividualStrenghCeckBox.isChecked()){
+                        editor.putString("fullUsername", playerNameString);
+                        if(playerNameString.length() > 10){
+                            char point = '.';
+                            String currentPlayerShort = playerNameString.substring(0, 8) + point;
+                            editor.putString("username", currentPlayerShort);
+                        }else{
+                            editor.putString("username", playerNameString);
+                        }
+                        editor.apply();
+                        startActivity(new Intent(AddPlayerActivity.this, PlayerInspectActivity.class));
+                    }
+                    else{
+                        finish();
+                    }
                 }
             }
         });

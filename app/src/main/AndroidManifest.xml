@@ -30,6 +30,7 @@
         <activity
             android:name="com.myApplication.teamCreator.AddPlayerActivity"
             android:exported="false"
+            android:noHistory="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.myApplication.teamCreator.AddGameActivity"
