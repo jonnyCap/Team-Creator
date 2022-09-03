@@ -238,4 +238,23 @@ public class DBHelper extends SQLiteOpenHelper {
         insertColumn("Players" , game);
         return arrayList;
     }
+    //----------------------Player-/Game-Name Methods---------------------
+    public ArrayList<String> getPlayerNames(){
+        ArrayList<String> playerNames = new ArrayList<>();
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * FROM Players", null, null);
+        while(cursor.moveToNext()){
+            playerNames.add(cursor.getString(1));
+        }
+        return playerNames;
+    }
+    public ArrayList<String> getGameNames(){
+        ArrayList<String> playerNames = new ArrayList<>();
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * FROM Games", null, null);
+        while(cursor.moveToNext()){
+            playerNames.add(cursor.getString(1));
+        }
+        return playerNames;
+    }
 }

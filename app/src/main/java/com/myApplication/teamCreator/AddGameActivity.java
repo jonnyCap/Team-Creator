@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class AddGameActivity extends AppCompatActivity {
@@ -56,8 +58,10 @@ public class AddGameActivity extends AppCompatActivity {
                 if(gameNameString.trim().equals("")){
                     Toast.makeText(AddGameActivity.this, "No game entered yet!", Toast.LENGTH_SHORT).show();
                 }
-                if(Character.isDigit(startChar) ) {
+                else if(Character.isDigit(startChar) ) {
                     Toast.makeText(AddGameActivity.this, "Game must start with a Letter!", Toast.LENGTH_SHORT).show();
+                }else if(nameExists(gameNameString)){
+                    Toast.makeText(AddGameActivity.this, "A Game with this name already exists!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     adapter.setGames(dbHelper.addAndFetchAllData("Games", "game", gameNameString));
@@ -65,5 +69,14 @@ public class AddGameActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private boolean nameExists(String gameName){
+        ArrayList<String> gameNames = dbHelper.getGameNames();
+        for (String name: gameNames) {
+            if(gameName.equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 }

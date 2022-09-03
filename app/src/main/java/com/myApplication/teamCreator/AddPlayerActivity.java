@@ -75,6 +75,8 @@ public class AddPlayerActivity extends AppCompatActivity {
                 int playerDefaultStrengthInt;
                 if(playerNameString.trim().equals("")){
                     Toast.makeText(AddPlayerActivity.this, "No name entered yet!", Toast.LENGTH_SHORT).show();
+                }else if(nameExists(playerNameString)){
+                    Toast.makeText(AddPlayerActivity.this, "A Player with this name already exists!", Toast.LENGTH_SHORT).show();
                 }else {
                     playerDefaultStrengthInt = Integer.parseInt(playerDefaultStrengthString);
                     adapter.setPlayers(dbHelper.AddAndFetchAllPlayerData("Players", "name", "defaultStrength", playerNameString, playerDefaultStrengthInt));
@@ -102,5 +104,14 @@ public class AddPlayerActivity extends AppCompatActivity {
             String variable = String.valueOf(i);
             this.newPlayerStrengthOptions.add(variable);
         }
+    }
+    private boolean nameExists(String playerName){
+        ArrayList<String> playerNames = dbHelper.getPlayerNames();
+        for (String name: playerNames) {
+            if(playerName.equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 }
