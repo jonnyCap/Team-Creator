@@ -21,9 +21,9 @@ public class BackgroundActivity extends AppCompatActivity {
         setContentView(R.layout.activity_background);
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F9FFF")));
@@ -32,12 +32,9 @@ public class BackgroundActivity extends AppCompatActivity {
         addProgress();
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                finish();
-                startActivity(new Intent(BackgroundActivity.this, CreateTeamsActivity.class));
-            }
+        handler.postDelayed(() -> {
+            finish();
+            startActivity(new Intent(BackgroundActivity.this, CreateTeamsActivity.class));
         }, 1000);
 
     }

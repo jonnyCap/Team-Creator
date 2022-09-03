@@ -33,12 +33,7 @@ public class CustomGameAdapter extends RecyclerView.Adapter<CustomGameAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull CustomGameAdapter.ViewHolder holder, int position) {
         holder.gameText.setText(games.get(position).getName());
-        holder.deleteGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteFromDatabase(position);
-            }
-        });
+        holder.deleteGameButton.setOnClickListener(v -> deleteFromDatabase(position));
     }
 
     @Override
@@ -46,7 +41,7 @@ public class CustomGameAdapter extends RecyclerView.Adapter<CustomGameAdapter.Vi
         return games.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView gameText;
         private final ImageButton deleteGameButton;

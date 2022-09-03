@@ -40,16 +40,13 @@ public class CustomFinishedTeamsAdapter extends RecyclerView.Adapter<CustomFinis
         holder.finalTeamMemberAmount.setText(memberAmount);
         holder.finalTeamAverageStrength.setText(averageStrength);
 
-        holder.parentFinishedTeam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString("team", teamsName);
-                editor.apply();
-                team = new Team(finishedTeams.get(position).getTeamMembers());
-                context.startActivity(new Intent(context, ShowTeamMembersActivity.class));
-            }
+        holder.parentFinishedTeam.setOnClickListener(v -> {
+            SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putString("team", teamsName);
+            editor.apply();
+            team = new Team(finishedTeams.get(position).getTeamMembers());
+            context.startActivity(new Intent(context, ShowTeamMembersActivity.class));
         });
     }
 
@@ -58,7 +55,7 @@ public class CustomFinishedTeamsAdapter extends RecyclerView.Adapter<CustomFinis
         return finishedTeams.size();
     }
 
-    public class ViewHolderFinishedTeams extends RecyclerView.ViewHolder{
+    public static class ViewHolderFinishedTeams extends RecyclerView.ViewHolder{
         private final TextView finishedTeamsText;
         private final TextView finalTeamMemberAmount;
         private final TextView finalTeamAverageStrength;

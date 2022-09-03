@@ -37,17 +37,12 @@ public class CreateTeamsActivity extends AppCompatActivity {
         //Check current Config
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
             //Close Button
             ImageButton closeBtn = findViewById(R.id.closeBtn);
-            closeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            closeBtn.setOnClickListener(v -> finish());
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
@@ -72,20 +67,12 @@ public class CreateTeamsActivity extends AppCompatActivity {
 
         //Redo Teams WITH NEW SETTINGS
         ImageButton redoTeamsWNS = findViewById(R.id.redoTeamsWNS);
-        redoTeamsWNS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CreateTeamsActivity.this, StartActivity.class));
-            }
-        });
+        redoTeamsWNS.setOnClickListener(v -> startActivity(new Intent(CreateTeamsActivity.this, StartActivity.class)));
         //Redo Teams WITH OLD SETTINGS
         ImageButton redoTeamsWOS = findViewById(R.id.redoTeamsWOS);
-        redoTeamsWOS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                startActivity(new Intent(CreateTeamsActivity.this, BackgroundActivity.class));
-            }
+        redoTeamsWOS.setOnClickListener(v -> {
+            finish();
+            startActivity(new Intent(CreateTeamsActivity.this, BackgroundActivity.class));
         });
         //RecyclerView
         adapter.setFinishedTeams(this.finishedTeamsList);

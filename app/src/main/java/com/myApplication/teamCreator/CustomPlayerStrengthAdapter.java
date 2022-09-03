@@ -41,13 +41,10 @@ public class CustomPlayerStrengthAdapter extends RecyclerView.Adapter<CustomPlay
         String player = pref.getString("fullUsername", "");
         String specificStrengthString = String.valueOf(dbHelper.returnSpecificStrength(gameAndStrength.get(position),player));
         holder.specificStrength.setText(specificStrengthString);
-        holder.parentPlayerStrength.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setSelectedGame(gameAndStrength.get(position));
-                row_index = position;
-                notifyDataSetChanged();
-            }
+        holder.parentPlayerStrength.setOnClickListener(v -> {
+            setSelectedGame(gameAndStrength.get(position));
+            row_index = position;
+            notifyDataSetChanged();
         });
         if(row_index == position){
             holder.inspectPlayerlayout.setBackgroundColor(Color.parseColor("#9CD8FF"));
@@ -61,7 +58,7 @@ public class CustomPlayerStrengthAdapter extends RecyclerView.Adapter<CustomPlay
         return gameAndStrength.size();
     }
 
-    public class ViewHolderPlayerStrength extends RecyclerView.ViewHolder{
+    public static class ViewHolderPlayerStrength extends RecyclerView.ViewHolder{
         private final TextView finalPlayerStrengthText;
         private final TextView specificStrength;
         private final CardView parentPlayerStrength;

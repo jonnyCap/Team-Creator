@@ -28,17 +28,12 @@ public class AddGameActivity extends AppCompatActivity {
         //Check current Config
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
             //Close Button
             ImageButton closeBtn = findViewById(R.id.closeBtn);
-            closeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            closeBtn.setOnClickListener(v -> finish());
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
@@ -50,23 +45,20 @@ public class AddGameActivity extends AppCompatActivity {
         gameName = findViewById(R.id.gameName);
 
         finalAddGameButton = findViewById(R.id.finalAddGameButton);
-        finalAddGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String gameNameString = gameName.getText().toString();
-                char startChar = gameNameString.charAt(0);
-                if(gameNameString.trim().equals("")){
-                    Toast.makeText(AddGameActivity.this, "No game entered yet!", Toast.LENGTH_SHORT).show();
-                }
-                else if(Character.isDigit(startChar) ) {
-                    Toast.makeText(AddGameActivity.this, "Game must start with a Letter!", Toast.LENGTH_SHORT).show();
-                }else if(nameExists(gameNameString)){
-                    Toast.makeText(AddGameActivity.this, "A Game with this name already exists!", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    adapter.setGames(dbHelper.addAndFetchAllData("Games", "game", gameNameString));
-                    finish();
-                }
+        finalAddGameButton.setOnClickListener(v -> {
+            String gameNameString = gameName.getText().toString();
+            char startChar = gameNameString.charAt(0);
+            if(gameNameString.trim().equals("")){
+                Toast.makeText(AddGameActivity.this, "No game entered yet!", Toast.LENGTH_SHORT).show();
+            }
+            else if(Character.isDigit(startChar) ) {
+                Toast.makeText(AddGameActivity.this, "Game must start with a Letter!", Toast.LENGTH_SHORT).show();
+            }else if(nameExists(gameNameString)){
+                Toast.makeText(AddGameActivity.this, "A Game with this name already exists!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                adapter.setGames(dbHelper.addAndFetchAllData("Games", "game", gameNameString));
+                finish();
             }
         });
     }

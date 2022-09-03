@@ -40,17 +40,12 @@ public class StartActivity extends AppCompatActivity {
         //Check current Config
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
             //Close Button
             ImageButton closeBtn = findViewById(R.id.closeBtn);
-            closeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            closeBtn.setOnClickListener(v -> finish());
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
@@ -61,32 +56,29 @@ public class StartActivity extends AppCompatActivity {
 
         //final Button
         ImageButton finalCreateTeamsButton = findViewById(R.id.finalCreateTeamsButton);
-        finalCreateTeamsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedPlayers = adapter.getSelectedPlayers();
-                if(games.size() == 0){
-                    Toast.makeText(StartActivity.this, "You must create a Game first!", Toast.LENGTH_SHORT).show();
-                }else if(players.size() == 0){
-                    Toast.makeText(StartActivity.this, "You must add Players first!", Toast.LENGTH_SHORT).show();
-                }else {
-                    finalGame = selectGameSpinner.getSelectedItem().toString();
-                    //Muss noch mit Try und catch versehen werden
-                    if (amountOfTeamsEdtTxt.getText().toString().trim().equals("")) {
-                        Toast.makeText(StartActivity.this, "Enter Number of Teams!", Toast.LENGTH_SHORT).show();
+        finalCreateTeamsButton.setOnClickListener(v -> {
+            selectedPlayers = adapter.getSelectedPlayers();
+            if(games.size() == 0){
+                Toast.makeText(StartActivity.this, "You must create a Game first!", Toast.LENGTH_SHORT).show();
+            }else if(players.size() == 0){
+                Toast.makeText(StartActivity.this, "You must add Players first!", Toast.LENGTH_SHORT).show();
+            }else {
+                finalGame = selectGameSpinner.getSelectedItem().toString();
+                //Muss noch mit Try und catch versehen werden
+                if (amountOfTeamsEdtTxt.getText().toString().trim().equals("")) {
+                    Toast.makeText(StartActivity.this, "Enter Number of Teams!", Toast.LENGTH_SHORT).show();
+                } else {
+                    teamsAmount = Integer.parseInt(amountOfTeamsEdtTxt.getText().toString());
+                    finalBalancingMethod = selectTeamBalancingSpinner.getSelectedItem().toString();
+                    if (teamsAmount > adapter.getSelectedPlayersAmount() && adapter.getSelectedPlayersAmount() != 0 && !selectAllCheckBox.isChecked()) {
+                        Toast.makeText(StartActivity.this, "Cannot create more Teams than Players!", Toast.LENGTH_SHORT).show();
+                    } else if (teamsAmount == 0) {
+                        Toast.makeText(StartActivity.this, "Cannot create 0 Teams!", Toast.LENGTH_SHORT).show();
                     } else {
-                        teamsAmount = Integer.parseInt(amountOfTeamsEdtTxt.getText().toString());
-                        finalBalancingMethod = selectTeamBalancingSpinner.getSelectedItem().toString();
-                        if (teamsAmount > adapter.getSelectedPlayersAmount() && adapter.getSelectedPlayersAmount() != 0 && !selectAllCheckBox.isChecked()) {
-                            Toast.makeText(StartActivity.this, "Cannot create more Teams than Players!", Toast.LENGTH_SHORT).show();
-                        } else if (teamsAmount == 0) {
-                            Toast.makeText(StartActivity.this, "Cannot create 0 Teams!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (adapter.getSelectedPlayersAmount() == 0 || selectAllCheckBox.isChecked()) {
-                                selectedPlayers = adapter.getAllPlayers();
-                            }
-                            startActivity(new Intent(StartActivity.this, BackgroundActivity.class));
+                        if (adapter.getSelectedPlayersAmount() == 0 || selectAllCheckBox.isChecked()) {
+                            selectedPlayers = adapter.getAllPlayers();
                         }
+                        startActivity(new Intent(StartActivity.this, BackgroundActivity.class));
                     }
                 }
             }

@@ -28,7 +28,7 @@ public class CustomShowTeamMemberAdapter extends RecyclerView.Adapter<CustomShow
         return team.getTeamMembersAmount();
     }
 
-    public class ViewHolderTeamMembers extends RecyclerView.ViewHolder {
+    public static class ViewHolderTeamMembers extends RecyclerView.ViewHolder {
         private final TextView finalTeamMember;
         private final TextView finalTeamMemberStrength;
         public ViewHolderTeamMembers(@NonNull View itemView) {

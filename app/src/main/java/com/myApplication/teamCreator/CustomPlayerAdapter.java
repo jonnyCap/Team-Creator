@@ -40,32 +40,24 @@ public class CustomPlayerAdapter extends RecyclerView.Adapter<CustomPlayerAdapte
         holder.playerText.setText(players.get(position).getName());
         int playerDefaultStrengthString = players.get(position).getDefaultStrength();
         holder.playerDefaultStrength.setText(Integer.toString(playerDefaultStrengthString));
-        holder.parentPlayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
-                SharedPreferences.Editor editor = pref.edit();
-                String currentPlayer = players.get(position).getName();
-                if(currentPlayer.length() > 0) {
-                    if(currentPlayer.length() > 10){
-                        char point = '.';
-                        String currentPlayerShort = currentPlayer.substring(0, 8) + point;
-                        editor.putString("username", currentPlayerShort);
-                    }else{
-                        editor.putString("username", currentPlayer);
-                    }
-                    editor.putString("fullUsername", currentPlayer);
-                    editor.apply();
+        holder.parentPlayer.setOnClickListener(v -> {
+            SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
+            SharedPreferences.Editor editor = pref.edit();
+            String currentPlayer = players.get(position).getName();
+            if(currentPlayer.length() > 0) {
+                if(currentPlayer.length() > 10){
+                    char point = '.';
+                    String currentPlayerShort = currentPlayer.substring(0, 8) + point;
+                    editor.putString("username", currentPlayerShort);
+                }else{
+                    editor.putString("username", currentPlayer);
                 }
-                context.startActivity(new Intent(context, PlayerInspectActivity.class));
+                editor.putString("fullUsername", currentPlayer);
+                editor.apply();
             }
+            context.startActivity(new Intent(context, PlayerInspectActivity.class));
         });
-        holder.deletePlayerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteFromDatabase(position);
-            }
-        });
+        holder.deletePlayerButton.setOnClickListener(v -> deleteFromDatabase(position));
     }
 
     @Override
@@ -73,7 +65,7 @@ public class CustomPlayerAdapter extends RecyclerView.Adapter<CustomPlayerAdapte
         return players.size();
     }
 
-    public class ViewHolderPlayer extends RecyclerView.ViewHolder{
+    public static class ViewHolderPlayer extends RecyclerView.ViewHolder{
 
         private final TextView playerText;
         private final TextView playerDefaultStrength;

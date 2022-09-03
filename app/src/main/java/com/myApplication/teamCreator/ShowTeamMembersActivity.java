@@ -24,9 +24,9 @@ public class ShowTeamMembersActivity extends AppCompatActivity {
         //Check current Config
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
@@ -39,12 +39,7 @@ public class ShowTeamMembersActivity extends AppCompatActivity {
         String teamMemberHeaderString = pref.getString("team", "");
         teamMembersHeader.setText(teamMemberHeaderString);
         ImageButton goBackToTeamsOverView = findViewById(R.id.goBackTeamsOverView);
-        goBackToTeamsOverView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        goBackToTeamsOverView.setOnClickListener(v -> finish());
         TextView averageTeamStrength = findViewById(R.id.averageTeamStrength);
         String averageStrength = String.valueOf(this.team.getRoundedAverageTeamStrength());
         averageTeamStrength.setText(averageStrength);

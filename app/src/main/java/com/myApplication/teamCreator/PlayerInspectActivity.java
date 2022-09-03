@@ -31,9 +31,9 @@ public class PlayerInspectActivity extends AppCompatActivity {
         //Check current Config
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
@@ -63,27 +63,21 @@ public class PlayerInspectActivity extends AppCompatActivity {
         newStrengthOptionSpinner.setAdapter(gameSpinnerAdapter);
         //Back Button
         ImageButton backButton = findViewById(R.id.closeBtn);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomPlayerStrengthAdapter.setSelectedGame("");
-                finish();
-            }
+        backButton.setOnClickListener(v -> {
+            CustomPlayerStrengthAdapter.setSelectedGame("");
+            finish();
         });
         //Update Strength on Specific Games
         ImageButton submitSpecificStrength = findViewById(R.id.submitNewSpecificStrength);
-        submitSpecificStrength.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newStrengthString = newStrengthOptionSpinner.getSelectedItem().toString();
-                int newStrength = Integer.parseInt(newStrengthString);
-                String playerName = pref.getString("fullUsername", "");
-                if(CustomPlayerStrengthAdapter.getSelectedGame().equals("")){
-                    Toast.makeText(PlayerInspectActivity.this, "Choose a game!", Toast.LENGTH_SHORT).show();
-                }else {
-                    dbHelper.updateColumn(CustomPlayerStrengthAdapter.getSelectedGame(), newStrength, playerName);
-                    adapter.notifyDataSetChanged();
-                }
+        submitSpecificStrength.setOnClickListener(v -> {
+            String newStrengthString = newStrengthOptionSpinner.getSelectedItem().toString();
+            int newStrength = Integer.parseInt(newStrengthString);
+            String playerName1 = pref.getString("fullUsername", "");
+            if(CustomPlayerStrengthAdapter.getSelectedGame().equals("")){
+                Toast.makeText(PlayerInspectActivity.this, "Choose a game!", Toast.LENGTH_SHORT).show();
+            }else {
+                dbHelper.updateColumn(CustomPlayerStrengthAdapter.getSelectedGame(), newStrength, playerName1);
+                adapter.notifyDataSetChanged();
             }
         });
     }

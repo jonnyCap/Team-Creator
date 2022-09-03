@@ -1,6 +1,5 @@
 package com.myApplication.teamCreator;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,17 +26,12 @@ public class GamesActivity extends AppCompatActivity {
         //Check current Config
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
             //Close Button
             ImageButton closeBtn = findViewById(R.id.closeBtn);
-            closeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            closeBtn.setOnClickListener(v -> finish());
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
@@ -46,12 +40,7 @@ public class GamesActivity extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         RecyclerView recyclerViewGame = findViewById(R.id.recyclerViewGame);
         ImageButton addGameButton = findViewById(R.id.addGameButton);
-        addGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GamesActivity.this, AddGameActivity.class));
-            }
-        });
+        addGameButton.setOnClickListener(v -> startActivity(new Intent(GamesActivity.this, AddGameActivity.class)));
             this.games = dbHelper.fetchAllData();
             adapter = new CustomGameAdapter(this);
             adapter.setGames(this.games);

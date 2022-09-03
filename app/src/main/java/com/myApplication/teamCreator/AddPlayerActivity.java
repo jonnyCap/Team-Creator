@@ -35,17 +35,12 @@ public class AddPlayerActivity extends AppCompatActivity {
         //Check current Config
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
             //Close Button
             ImageButton closeBtn = findViewById(R.id.closeBtn);
-            closeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            closeBtn.setOnClickListener(v -> finish());
         } else {
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         }
         //Page Content
         Objects.requireNonNull(getSupportActionBar()).setTitle("TC");
@@ -67,34 +62,31 @@ public class AddPlayerActivity extends AppCompatActivity {
         playerName = findViewById(R.id.playerName);
 
         finalAddPlayerButton = findViewById(R.id.finalAddPlayerButton);
-        finalAddPlayerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String playerNameString = playerName.getText().toString();
-                String playerDefaultStrengthString = playerDefaultStrengthSpinner.getSelectedItem().toString();
-                int playerDefaultStrengthInt;
-                if(playerNameString.trim().equals("")){
-                    Toast.makeText(AddPlayerActivity.this, "No name entered yet!", Toast.LENGTH_SHORT).show();
-                }else if(nameExists(playerNameString)){
-                    Toast.makeText(AddPlayerActivity.this, "A Player with this name already exists!", Toast.LENGTH_SHORT).show();
-                }else {
-                    playerDefaultStrengthInt = Integer.parseInt(playerDefaultStrengthString);
-                    adapter.setPlayers(dbHelper.AddAndFetchAllPlayerData("Players", "name", "defaultStrength", playerNameString, playerDefaultStrengthInt));
-                    if(adjustIndividualStrenghCeckBox.isChecked()){
-                        editor.putString("fullUsername", playerNameString);
-                        if(playerNameString.length() > 10){
-                            char point = '.';
-                            String currentPlayerShort = playerNameString.substring(0, 8) + point;
-                            editor.putString("username", currentPlayerShort);
-                        }else{
-                            editor.putString("username", playerNameString);
-                        }
-                        editor.apply();
-                        startActivity(new Intent(AddPlayerActivity.this, PlayerInspectActivity.class));
+        finalAddPlayerButton.setOnClickListener(v -> {
+            String playerNameString = playerName.getText().toString();
+            String playerDefaultStrengthString = playerDefaultStrengthSpinner.getSelectedItem().toString();
+            int playerDefaultStrengthInt;
+            if(playerNameString.trim().equals("")){
+                Toast.makeText(AddPlayerActivity.this, "No name entered yet!", Toast.LENGTH_SHORT).show();
+            }else if(nameExists(playerNameString)){
+                Toast.makeText(AddPlayerActivity.this, "A Player with this name already exists!", Toast.LENGTH_SHORT).show();
+            }else {
+                playerDefaultStrengthInt = Integer.parseInt(playerDefaultStrengthString);
+                adapter.setPlayers(dbHelper.AddAndFetchAllPlayerData("Players", "name", "defaultStrength", playerNameString, playerDefaultStrengthInt));
+                if(adjustIndividualStrenghCeckBox.isChecked()){
+                    editor.putString("fullUsername", playerNameString);
+                    if(playerNameString.length() > 10){
+                        char point = '.';
+                        String currentPlayerShort = playerNameString.substring(0, 8) + point;
+                        editor.putString("username", currentPlayerShort);
+                    }else{
+                        editor.putString("username", playerNameString);
                     }
-                    else{
-                        finish();
-                    }
+                    editor.apply();
+                    startActivity(new Intent(AddPlayerActivity.this, PlayerInspectActivity.class));
+                }
+                else{
+                    finish();
                 }
             }
         });

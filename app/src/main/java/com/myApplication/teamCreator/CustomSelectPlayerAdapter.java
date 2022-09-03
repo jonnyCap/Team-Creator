@@ -26,15 +26,12 @@ public class CustomSelectPlayerAdapter extends RecyclerView.Adapter<CustomSelect
     @Override
     public void onBindViewHolder(@NonNull CustomSelectPlayerAdapter.ViewHolderSelectPlayer holder, int position) {
         holder.selectedPlayerText.setText(players.get(position).getName());
-        holder.selectedPlayerCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(buttonView.isShown()){
-                    if(buttonView.isChecked()){
-                        selectedPlayers.add(players.get(position));
-                    }else{
-                        selectedPlayers.remove(players.get(position));
-                    }
+        holder.selectedPlayerCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(buttonView.isShown()){
+                if(buttonView.isChecked()){
+                    selectedPlayers.add(players.get(position));
+                }else{
+                    selectedPlayers.remove(players.get(position));
                 }
             }
         });
@@ -46,7 +43,7 @@ public class CustomSelectPlayerAdapter extends RecyclerView.Adapter<CustomSelect
         return players.size();
     }
 
-    public class ViewHolderSelectPlayer extends RecyclerView.ViewHolder{
+    public static class ViewHolderSelectPlayer extends RecyclerView.ViewHolder{
 
         private final CheckBox selectedPlayerCheckbox;
         private final TextView selectedPlayerText;
